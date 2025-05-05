@@ -1,0 +1,80 @@
+/* You can add global styles to this file, and also import other style files */
+/* styles.css or styles.scss */
+
+:root {
+    --bg-color: #FFFFFF;
+    --card-bg: #1e1e1e;
+    --text-color: #000000;
+    --border-color: #333;
+    --primary-color: #3f51b5;
+    --accent-color: #2196f3;
+    --hover-color: #2c2c2c;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+  }
+  
+  th {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }
+  
+  td {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  input[type="file"] {
+    color: var(--text-color);
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  h4, h5, h6 {
+    color: var(--text-color);
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: oklch(95.1% 0.026 236.824) !important;
+}
+
+.mdc-text-field--filled.mdc-text-field--disabled {
+  background-color: oklch(95.1% 0.026 236.824) !important;
+}

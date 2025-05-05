@@ -1,0 +1,103 @@
+<!-- <div class="sidebar vh-100 p-3" style="background-color: #5C6BC0;">
+  <ul class="nav flex-column">
+    <li class="nav-item" *ngFor="let item of menuItems">
+      <a 
+        class="nav-link text-light d-flex align-items-center" 
+        [routerLink]="item.route" 
+        (click)="item.action()" 
+        routerLinkActive="active"
+        [ngClass]="{'hover-dark': true}"
+      >
+        <i class="{{ item.icon }} me-2"></i> 
+        {{ item.label }}
+      </a>
+    </li>
+  </ul>
+</div> -->
+
+<!-- 
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark vh-100" style="width: 250px;">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <i class="fas fa-building me-2"></i>
+    <span class="fs-4">Employee Portal</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li *ngFor="let item of menuItems" class="nav-item">
+      <a 
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        (click)="item.action()"
+        class="nav-link text-white d-flex align-items-center"
+        [ngClass]="{ 'active': router.url === item.route }"
+      >
+        <i class="{{ item.icon }} me-2"></i>
+        {{ item.label }}
+      </a>
+    </li>
+  </ul>
+  <hr>
+  <div class="dropdown">
+    <button class="btn btn-dark dropdown-toggle d-flex align-items-center" 
+            type="button" 
+            id="dropdownUser1" 
+            data-bs-toggle="dropdown" 
+            aria-expanded="false">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/036/280/651/small_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg"
+           alt="" width="32" height="32" class="rounded-circle me-2">
+      <strong>Manager</strong>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+      <li><a class="dropdown-item" (click)="navigateToProfile()">Profile</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+    </ul>
+  </div>
+  
+  
+</div> -->
+
+
+<!-- Fixed Sidebar -->
+<div class="d-flex flex-column justify-content-between text-bg-dark p-3 vh-100 position-fixed" style="width: 250px;">
+  <!-- Top content -->
+  <div>
+    <a href="/" class="d-flex align-items-center mb-3 text-white text-decoration-none">
+      <i class="fas fa-building me-2"></i>
+      <span class="fs-4">Employee Portal</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li *ngFor="let item of menuItems" class="nav-item">
+        <a 
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          (click)="item.action()"
+          class="nav-link text-white d-flex align-items-center"
+          [ngClass]="{ 'active': router.url === item.route }"
+        >
+          <i class="{{ item.icon }} me-2"></i>
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Bottom content -->
+  <div class="dropdown">
+    <button class="btn btn-dark dropdown-toggle d-flex align-items-center" 
+            type="button" 
+            id="dropdownUser1" 
+            data-bs-toggle="dropdown" 
+            aria-expanded="false">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/036/280/651/small_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg"
+           alt="" width="32" height="32" class="rounded-circle me-2">
+      <strong>Manager</strong>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+      <li><a class="dropdown-item" (click)="navigateToProfile()">Profile</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+    </ul>
+  </div>
+</div>

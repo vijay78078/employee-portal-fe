@@ -1,0 +1,178 @@
+<!-- Success Toast -->
+<div
+  class="toast align-items-center text-bg-success border-0 position-fixed top-0 end-0 m-3"
+  id="feedbackSuccessToast"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+>
+  <div class="d-flex">
+    <div class="toast-body">Feedback submitted successfully!</div>
+    <button
+      type="button"
+      class="btn-close btn-close-white me-2 m-auto"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+  </div>
+</div>
+
+<!-- Error Toast -->
+<div
+  class="toast align-items-center text-bg-danger border-0 position-fixed top-0 end-0 m-3"
+  id="feedbackErrorToast"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+>
+  <div class="d-flex">
+    <div class="toast-body">Please fill out all required fields.</div>
+    <button
+      type="button"
+      class="btn-close btn-close-white me-2 m-auto"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+    ></button>
+  </div>
+</div>
+
+
+<div class="container mt-5">
+  <h2>Feedback Form</h2>
+
+  <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+    <!-- Row 1 -->
+    <div class="row">
+      <div class="col-md-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Select Reportee</mat-label>
+          <mat-select formControlName="selectedReportee" >
+            <mat-option *ngFor="let reportee of reportees" [value]="reportee">
+              {{ reportee }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="feedbackForm.get('selectedReportee')?.invalid && (feedbackForm.get('selectedReportee')?.touched || formSubmitted)">
+            Please select a reportee
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <label for="rating">Rating:</label>
+        <p-rating
+          formControlName="rating"
+          [stars]="5"
+          [cancel]="false"
+        ></p-rating>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="feedbackForm.get('date')?.invalid && (feedbackForm.get('date')?.touched || formSubmitted)">
+            Choose a date
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Medium</mat-label>
+          <mat-select formControlName="medium" >
+            <mat-option value="Email">Email</mat-option>
+            <mat-option value="Retro">Retro</mat-option>
+            <mat-option value="Jira">Jira</mat-option>
+            <mat-option value="Others">Others</mat-option>
+          </mat-select>
+          <mat-error *ngIf="feedbackForm.get('medium')?.invalid && (feedbackForm.get('medium')?.touched || formSubmitted)">
+            Please select the medium
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row mt-3">
+      <mat-form-field appearance="fill" class="w-100 mt-3">
+        <mat-label>Feedback</mat-label>
+        <textarea
+          matInput
+          rows="4"
+          formControlName="feedbackText"
+          
+        ></textarea>
+        <mat-error *ngIf="feedbackForm.get('feedbackText')?.invalid && (feedbackForm.get('feedbackText')?.touched || formSubmitted)">
+          Enter your feedback
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <!-- Feedback Textarea -->
+
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!feedbackForm.valid">
+      Submit Feedback
+    </button>
+  </form>
+
+  <!-- Feedback List -->
+  <h2 class="mt-5">Feedback List</h2>
+  <p-table
+  #table
+  [value]="feedbacks"
+  [paginator]="true"
+  [rows]="5"
+  [globalFilterFields]="['employeeName', 'managerName', 'rating', 'feedbackText']"
+  [resizableColumns]="true"
+  [reorderableColumns]="true"
+  [scrollable]="true"
+  scrollHeight="400px"
+  scrollDirection="horizontal"
+  class="p-datatable-sm p-datatable-striped"
+>
+  <!-- Global Filter -->
+  <ng-template pTemplate="caption">
+    <div class="d-flex justify-content-end">
+      <input
+        type="text"
+        pInputText
+        placeholder="Search employees..."
+        (input)="onGlobalFilter($event)"
+        class="form-control w-25"
+      />
+    </div>
+  </ng-template>
+
+  <!-- Table Header -->
+  <ng-template pTemplate="header">
+    <tr>
+      <th>S.No</th>
+      <th pSortableColumn="employeeName">Employee <p-sortIcon field="employeeName" /></th>
+      <th pSortableColumn="managerName">Manager <p-sortIcon field="managerName" /></th>
+      <th pSortableColumn="rating">Rating <p-sortIcon field="rating" /></th>
+      <th pSortableColumn="feedbackText">Feedback Text <p-sortIcon field="feedbackText" /></th>
+      <th pSortableColumn="date">Date <p-sortIcon field="date" /></th>
+    </tr>
+  </ng-template>
+
+  <!-- Table Body -->
+  <ng-template pTemplate="body" let-feedback let-rowIndex="rowIndex">
+    <tr>
+      <td>{{ rowIndex + 1 }}</td>
+      <td>{{ feedback.employeeName }}</td>
+      <td>{{ feedback.managerName }}</td>
+      <td>{{ feedback.rating }}</td>
+      <td>{{ feedback.feedbackText }}</td>
+      <td>{{ feedback.date }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+</div>
+

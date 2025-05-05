@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <div class="row align-items-center">
+      <!-- Left Side: Import Section -->
+      <div class="col-md-6">
+        <form class="d-flex align-items-center gap-2">
+          <input type="file" accept=".xlsx, .xls, .csv" (change)="onFileChange($event)" class="form-control" id="fileInput" required />
+          <button type="submit" class="btn btn-primary" (click)="onImport($event)">Import Data</button>
+        </form>
+      </div>
+  
+      <!-- Right Side: Export Section -->
+      <div class="col-md-6 text-end">
+        <button class="btn btn-success" (click)="onExport()">Export Data</button>
+      </div>
+    </div>
+</div>
+  
+<!-- Toast Container -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+  <div id="importSuccessToast" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">Employees imported successfully!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+
+  <div id="importErrorToast" class="toast align-items-center text-bg-danger border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">Error importing employees.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+
+  <div id="exportSuccessToast" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">Employees exported successfully!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+
+  <div id="exportErrorToast" class="toast align-items-center text-bg-danger border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">Error exporting employees.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>

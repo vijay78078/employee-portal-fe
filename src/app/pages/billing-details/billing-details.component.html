@@ -1,0 +1,60 @@
+<div class="container mt-4">
+    <h2 class="text-dark mb-3">Employee Billing Details</h2>
+  
+    <p-table
+    #table
+    [value]="employees"
+    [paginator]="true"
+    [rows]="pageSize"
+    [globalFilterFields]="['Full_Name', 'Emailid', 'Skill', 'Manager_Name']"
+    [resizableColumns]="true"
+    [reorderableColumns]="true"
+    [scrollable]="true"
+    scrollDirection="horizontal"
+    scrollWidth="2000px"
+    [first]="first"
+    class="p-datatable-sm p-datatable-striped"
+  >
+    <!-- Search Input -->
+    <ng-template pTemplate="caption">
+      <div class="d-flex justify-content-end">
+        <input
+          type="text"
+          pInputText
+          placeholder="Search employees..."
+          (input)="onGlobalFilter($event)"
+          class="form-control w-25"
+        />
+      </div>
+    </ng-template>
+  
+    <!-- Header with Sorting -->
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="id" style="min-width: 80px;">S.No <p-sortIcon field="id" /></th>
+        <th pSortableColumn="Full_Name" style="min-width: 150px;">Full Name <p-sortIcon field="Full_Name" /></th>
+        <th pSortableColumn="Employment_Type" style="min-width: 150px;">Employment Type <p-sortIcon field="Employment_Type" /></th>
+        <th pSortableColumn="Manager_Name" style="min-width: 180px;">Manager Name <p-sortIcon field="Manager_Name" /></th>
+        <th pSortableColumn="BillingRate" style="min-width: 150px;">Billing Rate <p-sortIcon field="BillingRate" /></th>
+        <th pSortableColumn="Rate_Card" style="min-width: 150px;">Rate Card <p-sortIcon field="Rate_Card" /></th>
+        <th pSortableColumn="Swp_2025" style="min-width: 150px;">SWP-2025<p-sortIcon field="Swp_2025" /></th>
+      </tr>
+    </ng-template>
+  
+    <!-- Body -->
+    <ng-template pTemplate="body" let-employee let-rowIndex="rowIndex">
+      <tr>
+        <td>{{ rowIndex + 1 }}</td>
+        <td>{{ employee.Full_Name }}</td>
+        <td>{{ employee.Employment_Type }}</td>
+        <td>{{ employee.Manager_Name }}</td>
+        <td>{{ employee.BillingRate }}</td>
+        <td>{{ employee.Rate_Card }}</td>
+        <td>{{ employee.Swp_2025 }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  
+  
+  
+  </div>

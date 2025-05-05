@@ -1,0 +1,113 @@
+<div class="container mt-4">
+  <h2 class="text-dark mb-3">Employee List</h2>
+
+  <p-table
+  #table
+  [value]="employees"
+  [paginator]="true"
+  [rows]="pageSize"
+  [globalFilterFields]="['Full_Name', 'Emailid', 'Skill', 'Manager_Name']"
+  [resizableColumns]="true"
+  [reorderableColumns]="true"
+  [scrollable]="true"
+  scrollDirection="horizontal"
+  scrollWidth="2000px"
+  [first]="first"
+  class="p-datatable-sm p-datatable-striped"
+>
+  <!-- Search Input -->
+  <ng-template pTemplate="caption">
+    <div class="d-flex justify-content-end">
+      <input
+        type="text"
+        pInputText
+        placeholder="Search employees..."
+        (input)="onGlobalFilter($event)"
+        class="form-control w-25"
+      />
+    </div>
+  </ng-template>
+
+  <!-- Header with Sorting -->
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="id" style="min-width: 80px;">S.No <p-sortIcon field="id" /></th>
+      <th pSortableColumn="Full_Name" style="min-width: 150px;">Full Name <p-sortIcon field="Full_Name" /></th>
+      <th pSortableColumn="Emailid" style="min-width: 200px;">Email ID <p-sortIcon field="Emailid" /></th>
+      <th pSortableColumn="Employment_Type" style="min-width: 150px;">Employment Type <p-sortIcon field="Employment_Type" /></th>
+      <th pSortableColumn="Role" style="min-width: 150px;">Role <p-sortIcon field="Role" /></th>
+      <th pSortableColumn="Team" style="min-width: 150px;">Team <p-sortIcon field="Team" /></th>
+      <th pSortableColumn="Manager_Name" style="min-width: 180px;">Manager Name <p-sortIcon field="Manager_Name" /></th>
+      <th pSortableColumn="DOJ_Allianz" style="min-width: 180px;">Joining Date (Allianz) <p-sortIcon field="DOJ_Allianz" /></th>
+      <th pSortableColumn="DOJ_Project" style="min-width: 180px;">Joining Date (Project) <p-sortIcon field="DOJ_Project" /></th>
+      <th pSortableColumn="Grade" style="min-width: 100px;">Grade <p-sortIcon field="Grade" /></th>
+      <th pSortableColumn="Designation" style="min-width: 180px;">Designation <p-sortIcon field="Designation" /></th>
+      <th pSortableColumn="Skill" style="min-width: 150px;">Skill <p-sortIcon field="Skill" /></th>
+
+      <!-- Frozen right "Actions" column -->
+      <th
+        pFrozenColumn
+        alignFrozen="right"
+        [frozen]="true"
+        style="min-width: 200px; background: white; z-index: 1;"
+      >
+        Actions
+      </th>
+    </tr>
+  </ng-template>
+
+  <!-- Body -->
+  <ng-template pTemplate="body" let-employee let-rowIndex="rowIndex">
+    <tr>
+      <td>{{ rowIndex + 1 }}</td>
+      <td>{{ employee.Full_Name }}</td>
+      <td>{{ employee.Emailid }}</td>
+      <td>{{ employee.Employment_Type }}</td>
+      <td>{{ employee.Role }}</td>
+      <td>{{ employee.Team }}</td>
+      <td>{{ employee.Manager_Name }}</td>
+      <td>{{ employee.DOJ_Allianz }}</td>
+      <td>{{ employee.DOJ_Project }}</td>
+      <td>{{ employee.Grade }}</td>
+      <td>{{ employee.Designation }}</td>
+      <td>{{ employee.Skill }}</td>
+
+      <!-- Frozen right "Actions" cell -->
+      <td
+        pFrozenColumn
+        alignFrozen="right"
+        [frozen]="true"
+        style="min-width: 200px; background: white; z-index: 1;"
+      >
+        <button pButton icon="pi pi-eye" class="p-button-text p-button-sm" title="View" (click)="viewEmployee(employee)"></button>
+        <button pButton icon="pi pi-pencil" class="p-button-text p-button-sm" title="Edit" (click)="editEmployee(employee)"></button>
+        <button pButton icon="pi pi-comments" class="p-button-text p-button-sm" title="Feedback"></button>
+        <button pButton icon="pi pi-trash" class="p-button-text p-button-sm" title="Delete" (click)="confirmDelete(employee)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteEmployeeModal" tabindex="-1" aria-labelledby="deleteEmployeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="deleteEmployeeModalLabel">Confirm Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete <strong>{{ selectedEmployee?.Full_Name }}</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="deleteEmployee()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
