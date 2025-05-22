@@ -8,6 +8,8 @@ import { Router, RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule]
 })
 export class NavbarComponent {
+
+  manager: string = "";
   constructor(public router: Router) {}
 
   menuItems = [
@@ -17,10 +19,13 @@ export class NavbarComponent {
     { label: 'Billing Details', route: '/billing-details', icon: 'fa fa-file-invoice-dollar', action: () => this.navigateToBillingDetails() },
     { label: 'Profile', route: '/profile', icon: 'fas fa-user-circle', action: () => this.navigateToProfile() },
     { label: 'Import/Export', route: '/import-export', icon: 'fas fa-file-import', action: () => this.navigateToImportExport() },
-    { label: 'Logout', route: null, icon: 'fas fa-sign-out-alt', action: () => this.logout() }
+    // { label: 'Hierarchy Tree', route: '/hierarchy-tree', icon: 'fas fa-file-import', action: () => this.navigateToHierarchyTree() },
+    { label: 'Logout', route: '/login', icon: 'fas fa-sign-out-alt', action: () => this.logout() }
   ];
   
-  
+  ngOnInit(){
+    this.manager = sessionStorage.getItem('managerName') || '';
+  }
 
   logout() {
     localStorage.clear();
@@ -49,6 +54,10 @@ export class NavbarComponent {
 
   navigateToBillingDetails(){
     this.router.navigate(['/billing-details']);  
+  }
+
+  navigateToHierarchyTree(){
+    this.router.navigate(['/hierarchy-tree']);  
   }
 
 }

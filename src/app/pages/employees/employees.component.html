@@ -1,5 +1,5 @@
-<div class="container mt-4">
-  <h2 class="text-dark mb-3">Employee List</h2>
+<div class="container">
+  <h3 class="text-dark">Employee List</h3>
 
   <p-table
   #table
@@ -81,7 +81,6 @@
       >
         <button pButton icon="pi pi-eye" class="p-button-text p-button-sm" title="View" (click)="viewEmployee(employee)"></button>
         <button pButton icon="pi pi-pencil" class="p-button-text p-button-sm" title="Edit" (click)="editEmployee(employee)"></button>
-        <button pButton icon="pi pi-comments" class="p-button-text p-button-sm" title="Feedback"></button>
         <button pButton icon="pi pi-trash" class="p-button-text p-button-sm" title="Delete" (click)="confirmDelete(employee)"></button>
       </td>
     </tr>

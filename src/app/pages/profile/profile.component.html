@@ -1,8 +1,36 @@
-<div class="card p-3 shadow-sm">
+<!-- <div class="card p-3 shadow-sm">
     <h4 class="mb-3">User Profile</h4>
     <p><strong>Full Name:</strong> {{ fullName }}</p>
     <p><strong>Username:</strong> {{ username }}</p>
     <p><strong>Email ID:</strong> {{ emailid }}</p>
     <p><strong>Role:</strong> {{ role }}</p>
   </div>
-  
+   -->
+
+   <div class="card shadow rounded-4 p-4 border-0" style="max-width: 500px; margin: auto; background: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+  <div class="text-center mb-4">
+    <div class="rounded-circle bg-primary text-white d-inline-flex justify-content-center align-items-center"
+         style="width: 80px; height: 80px; font-size: 32px; font-weight: bold;">
+      {{ fullName?.charAt(0) || '?' }}
+    </div>
+    <h4 class="mt-3 fw-bold">{{ fullName }}</h4>
+    <p class="text-muted mb-1">{{ role }}</p>
+  </div>
+
+  <hr />
+
+  <div class="mb-2">
+    <p class="mb-1"><strong>Username:</strong></p>
+    <div class="text-muted">{{ username }}</div>
+  </div>
+
+  <div class="mb-2">
+    <p class="mb-1"><strong>Email ID:</strong></p>
+    <div class="text-muted">{{ emailid }}</div>
+  </div>
+
+  <div class="mb-2">
+    <p class="mb-1"><strong>Role:</strong></p>
+    <div class="text-muted">{{ role }}</div>
+  </div>
+</div>

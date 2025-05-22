@@ -10,4 +10,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class LayoutComponent {
 
+  currentYear = new Date().getFullYear();
+  
 }

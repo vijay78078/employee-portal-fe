@@ -1,7 +1,36 @@
-<div class="d-flex">
+<!-- <div class="d-flex">
     <app-navbar></app-navbar>
-    <div class="flex-grow-1 p-3 layout vh-100" style="margin-left: 250px;">
+    <div class="flex-grow-1 p-3 layout vh-100 position-fixed" style="margin-left: 250px; width: 1477px; overflow: scroll;">
       <router-outlet></router-outlet>
     </div>
   </div>
-  
+   -->
+
+<!-- Full Page Wrapper -->
+<div class="d-flex">
+  <!-- Sidebar Navbar -->
+  <app-navbar></app-navbar>
+
+  <!-- Right Side Main Layout -->
+  <div class="flex-grow-1 d-flex flex-column" style="margin-left: 250px; width: calc(100% - 250px);">
+
+    <!-- Fixed Header -->
+    <header class="bg-light border-bottom d-flex align-items-center justify-content-between px-4"
+            style="height: 60px; position: fixed; top: 0; left: 250px; right: 0; z-index: 1000;">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCmfS8y8DSkt9nWF_E31nGDvn_cZ_YRgbIzg&s" alt="Brand Logo" height="40">
+      <span class="fw-bold" style="font-size: 20px;  color: #003781;">Allianz Technology India BMP Australia - UFS, RG, Data & Cross Area</span>
+    </header>
+
+    <!-- Scrollable Content Below Header -->
+    <div class="flex-grow-1 layout" style="margin-top: 60px; margin-bottom: 40px; overflow-y: auto; height: calc(100vh - 100px); padding: 1rem;">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- Fixed Footer -->
+    <footer class="text-end text-muted border-top"
+            style="height: 40px; line-height: 40px; position: fixed; bottom: 0; right: 20px; font-size: 14px;">
+      &copy; {{ currentYear }} Allianz Technology India BMP Australia - UFS, RG, Data & Cross Area. All rights reserved.
+    </footer>
+
+  </div>
+</div>
