@@ -77,6 +77,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   errorMessage = '';
   hidePassword = true;
+  currentYear: number = new Date().getFullYear();
 
   constructor(
     private fb: FormBuilder,

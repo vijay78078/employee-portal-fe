@@ -37,8 +37,8 @@
 </div>
 
 
-<div class="container mt-5">
-  <h2>Feedback Form</h2>
+<div class="container">
+  <h3>Feedback Form</h3>
 
   <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
     <!-- Row 1 -->
@@ -57,14 +57,6 @@
         </mat-form-field>
       </div>
 
-      <div class="col-md-3">
-        <label for="rating">Rating:</label>
-        <p-rating
-          formControlName="rating"
-          [stars]="5"
-          [cancel]="false"
-        ></p-rating>
-      </div>
 
       <div class="col-md-3">
         <mat-form-field appearance="fill" class="w-100">
@@ -93,24 +85,83 @@
         </mat-form-field>
       </div>
 
+      <div class="col-md-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Select the quarter</mat-label>
+          <mat-select formControlName="quarter" >
+            <mat-option value="Q1-2024">Q1-2024</mat-option>
+            <mat-option value="Q2-2024">Q2-2024</mat-option>
+            <mat-option value="Q3-2024">Q3-2024</mat-option>
+            <mat-option value="Q4-2024">Q4-2024</mat-option>
+            <mat-option value="Q1-2025">Q1-2025</mat-option>
+            <mat-option value="Q2-2025">Q2-2025</mat-option>
+            <mat-option value="Q3-2025">Q3-2025</mat-option>
+            <mat-option value="Q4-2025">Q4-2025</mat-option>
+          </mat-select>
+          <mat-error *ngIf="feedbackForm.get('quarter')?.invalid && (feedbackForm.get('quarter')?.touched || formSubmitted)">
+            Please select the quarter
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Select the year</mat-label>
+          <mat-select formControlName="year" >
+            <mat-option value="2024">2024</mat-option>
+            <mat-option value="2025">2025</mat-option>
+          </mat-select>
+          <mat-error *ngIf="feedbackForm.get('year')?.invalid && (feedbackForm.get('year')?.touched || formSubmitted)">
+            Please select the year
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <label for="rating">Rating:</label>
+        <p-rating
+          formControlName="rating"
+          [stars]="5"
+          [cancel]="false"
+        ></p-rating>
+      </div>
+
     </div>
 
     <!-- Row 2 -->
-    <div class="row mt-3">
-      <mat-form-field appearance="fill" class="w-100 mt-3">
-        <mat-label>Feedback</mat-label>
-        <textarea
-          matInput
-          rows="4"
-          formControlName="feedbackText"
-          
-        ></textarea>
-        <mat-error *ngIf="feedbackForm.get('feedbackText')?.invalid && (feedbackForm.get('feedbackText')?.touched || formSubmitted)">
-          Enter your feedback
-        </mat-error>
-      </mat-form-field>
+<!-- Row 2 -->
+<div class="row mt-3 align-items-start">
+  <div class="col-md-11">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Feedback</mat-label>
+      <textarea
+        matInput
+        rows="4"
+        formControlName="feedbackText"
+      ></textarea>
+      <mat-error *ngIf="feedbackForm.get('feedbackText')?.invalid && (feedbackForm.get('feedbackText')?.touched || formSubmitted)">
+        Enter your feedback
+      </mat-error>
+    </mat-form-field>
+  </div>
 
-    </div>
+  <!-- Rephrase Button -->
+  <div class="col-md-1 mt-3">
+    <button
+    type="button"  
+    mat-mini-fab
+    color="accent"
+    matTooltip="Rephrase Feedback"
+    (click)="rephraseFeedback()"
+    [disabled]="feedbackForm.get('feedbackText')?.invalid || isRephrasing"
+  >
+    <mat-icon *ngIf="!isRephrasing">Rephrase the Feedback using AI</mat-icon>  
+    <mat-spinner *ngIf="isRephrasing" diameter="24">Loading</mat-spinner>
+  </button>
+  
+  </div>
+</div>
+
 
     <!-- Feedback Textarea -->
 
@@ -121,13 +172,13 @@
   </form>
 
   <!-- Feedback List -->
-  <h2 class="mt-5">Feedback List</h2>
+  <h3 class="mt-3">Feedback List</h3>
   <p-table
   #table
   [value]="feedbacks"
   [paginator]="true"
   [rows]="5"
-  [globalFilterFields]="['employeeName', 'managerName', 'rating', 'feedbackText']"
+  [globalFilterFields]="['employeeName', 'managerName', 'rating', 'feedbackText', 'quarter', 'year']"
   [resizableColumns]="true"
   [reorderableColumns]="true"
   [scrollable]="true"
@@ -141,7 +192,7 @@
       <input
         type="text"
         pInputText
-        placeholder="Search employees..."
+        placeholder="Search"
         (input)="onGlobalFilter($event)"
         class="form-control w-25"
       />
@@ -157,6 +208,8 @@
       <th pSortableColumn="rating">Rating <p-sortIcon field="rating" /></th>
       <th pSortableColumn="feedbackText">Feedback Text <p-sortIcon field="feedbackText" /></th>
       <th pSortableColumn="date">Date <p-sortIcon field="date" /></th>
+      <th pSortableColumn="quarter">Quarter <p-sortIcon field="quarter" /></th>
+      <th pSortableColumn="year">Year <p-sortIcon field="year" /></th>
     </tr>
   </ng-template>
 
@@ -169,6 +222,8 @@
       <td>{{ feedback.rating }}</td>
       <td>{{ feedback.feedbackText }}</td>
       <td>{{ feedback.date }}</td>
+      <td>{{ feedback.quarter }}</td>
+      <td>{{ feedback.year }}</td>
     </tr>
   </ng-template>
 </p-table>

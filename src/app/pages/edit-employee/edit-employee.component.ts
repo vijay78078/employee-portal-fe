@@ -45,13 +45,13 @@ export class EditEmployeeComponent implements OnInit {
     [
       { label: 'DOJ Allianz', controlName: 'DOJ_Allianz', type: 'date' },
       { label: 'DOL Allianz', controlName: 'DOL_Allianz', type: 'date' },
-      { label: 'Grade', controlName: 'Grade', type: 'select', options: ['AGS5', 'AGS6', 'AGS7', 'AGS8', 'AGS9', 'AGS10', 'AGS11', 'AGS12'] },
+      { label: 'Grade', controlName: 'Grade', type: 'select', options: ['AGS 5', 'AGS 6', 'AGS 7', 'AGS 8', 'AGS 9', 'AGS 10', 'AGS 11', 'AGS 12'] },
       { label: 'Designation', controlName: 'Designation', type: 'text' }
     ],
     [
       { label: 'DOJ Project', controlName: 'DOJ_Project', type: 'date' },
       { label: 'DOL Project', controlName: 'DOL_Project', type: 'date' },
-      { label: 'Gender', controlName: 'Gender', type: 'select', options: ['Male', 'Female', 'Other'] },
+      { label: 'Gender', controlName: 'Gender', type: 'select', options: ['M', 'F'] },
       { label: 'Company', controlName: 'Company', type: 'select', options: ['AZTEC', 'Accenture', 'AZ Consulting', 'TCS', 'Infosys', 'Sonyocareers.com'] }
     ],
     [
@@ -86,31 +86,31 @@ export class EditEmployeeComponent implements OnInit {
     console.log(data,"data")
     this.employeeForm = this.fb.group({
       id: [data.id], // Assuming the employee object has an 'id' property
-      Employment_Type: [data.Employment_Type, Validators.required],
-      Billable_Status: [data.Billable_Status, Validators.required],
-      Employee_Status: [data.Employee_Status, Validators.required],
-      SystemID: [data.System_ID, Validators.required],
-      BenslID: [data.Bensl_ID, Validators.required],
+      Employment_Type: [data.Employment_Type],
+      Billable_Status: [data.Billable_Status],
+      Employee_Status: [data.Employee_Status],
+      SystemID: [data.System_ID],
+      BenslID: [data.Bensl_ID],
       Full_Name: [data.Full_Name, Validators.required],
-      Role: [data.Role, Validators.required],
-      Skill: [data.Skill, Validators.required],
-      Team: [data.Team, Validators.required],
-      Manager_Name: [data.Manager_Name, Validators.required],
-      Manager_ID: [data.Manager_ID, Validators.required],
-      Critical: [data.Critical, Validators.required],
-      DOJ_Allianz: [data.DOJ_Allianz, Validators.required],
-      DOL_Allianz: [data.DOL_Allianz, Validators.required],
-      Grade: [data.Grade, Validators.required],
-      Designation: [data.Designation, Validators.required],
-      DOJ_Project: [data.DOJ_Project, Validators.required],
-      DOL_Project: [data.DOL_Project, Validators.required],
-      Gender: [data.Gender, Validators.required],
-      Company: [data.Company, Validators.required],
+      Role: [data.Role],
+      Skill: [data.Skill],
+      Team: [data.Team],
+      Manager_Name: [data.Manager_Name],
+      Manager_ID: [data.Manager_ID],
+      Critical: [data.Critical],
+      DOJ_Allianz: [data.DOJ_Allianz],
+      DOL_Allianz: [data.DOL_Allianz],
+      Grade: [data.Grade],
+      Designation: [data.Designation],
+      DOJ_Project: [data.DOJ_Project],
+      DOL_Project: [data.DOL_Project],
+      Gender: [data.Gender],
+      Company: [data.Company],
       Emailid: [data.Emailid, [Validators.required, Validators.email]],
-      Location: [data.Location, Validators.required],
-      BillingRate: [data.BillingRate, Validators.required],
-      Rate_Card: [data.Rate_Card, Validators.required],
-      Remarks: [data.Remarks, Validators.required]
+      Location: [data.Location],
+      BillingRate: [data.BillingRate],
+      Rate_Card: [data.Rate_Card],
+      Remarks: [data.Remarks]
     });
   }
   

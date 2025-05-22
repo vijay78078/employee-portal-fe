@@ -11,6 +11,7 @@ import { AddEmployeeComponent } from './pages/add-employee/add-employee.componen
 import { EditEmployeeComponent } from './pages/edit-employee/edit-employee.component';
 import { ViewEmployeeComponent } from './pages/view-employee/view-employee.component';
 import { BillingDetailsComponent } from './pages/billing-details/billing-details.component';
+import { HierarchyTreeComponent } from './pages/hierarchy-tree/hierarchy-tree.component';
 
 export const routes: Routes = [
   // Public route
@@ -29,6 +30,7 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'add-employee', component: AddEmployeeComponent },
       { path: 'billing-details', component: BillingDetailsComponent},
+      { path: 'hierarchy-tree', component: HierarchyTreeComponent},
       {
         path: 'edit-employee',
         component: EditEmployeeComponent

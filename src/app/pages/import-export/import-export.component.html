@@ -1,19 +1,42 @@
-<div class="container mt-4">
-    <div class="row align-items-center">
-      <!-- Left Side: Import Section -->
-      <div class="col-md-6">
-        <form class="d-flex align-items-center gap-2">
-          <input type="file" accept=".xlsx, .xls, .csv" (change)="onFileChange($event)" class="form-control" id="fileInput" required />
-          <button type="submit" class="btn btn-primary" (click)="onImport($event)">Import Data</button>
-        </form>
-      </div>
-  
-      <!-- Right Side: Export Section -->
-      <div class="col-md-6 text-end">
-        <button class="btn btn-success" (click)="onExport()">Export Data</button>
-      </div>
+<div class="container mt-5">
+  <div class="bg-light shadow rounded-4 p-4">
+
+    <!-- Import Section -->
+    <div class="mb-4">
+      <h5 class="fw-semibold text-primary mb-3">
+        <i class="bi bi-upload me-2"></i> Import Employee Data
+      </h5>
+      <form class="d-flex flex-column flex-md-row align-items-start gap-3" (submit)="onImport($event)">
+        <input
+          type="file"
+          accept=".xlsx, .xls, .csv"
+          (change)="onFileChange($event)"
+          class="form-control"
+          id="fileInput"
+          required
+        />
+        <button type="submit" class="btn btn-primary d-flex align-items-center">
+          <i class="bi bi-cloud-arrow-up-fill me-2"></i>Import Data
+        </button>
+      </form>
     </div>
+
+    <hr />
+
+    <!-- Export Section -->
+    <div>
+      <h5 class="fw-semibold text-success mb-3">
+        <i class="bi bi-download me-2"></i> Export Employee Data
+      </h5>
+      <button class="btn btn-success d-flex align-items-center" (click)="onExport()">
+        <i class="bi bi-cloud-arrow-down-fill me-2"></i>Export Data
+      </button>
+    </div>
+
+  </div>
 </div>
+
+
   
 <!-- Toast Container -->
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
