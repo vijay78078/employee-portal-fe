@@ -126,7 +126,18 @@ export class AddEmployeeComponent {
   ];
 
   onSubmit() {
-    this.employeeService.addEmployee(this.employee).subscribe({
+
+    if (this.employeeForm.invalid) {
+    const errorToastEl = document.getElementById('employeeErrorToast');
+    if (errorToastEl) {
+      const errorToast = new bootstrap.Toast(errorToastEl);
+      errorToast.show();
+    }
+    return;
+  }
+
+  const formData = this.employeeForm.value;
+    this.employeeService.addEmployee(formData).subscribe({
       next: (res) => {
         
         
