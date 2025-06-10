@@ -294,7 +294,7 @@ showPopover = false;
       labels: Object.keys(skillCounts),
       datasets: [{
         data: Object.values(skillCounts),
-        backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#FF33B2', '#FFB233','#FFB2C3', '#FF6347', '#FFD700', '#32CD32', '#8A2BE2', '#00CED1']
+        backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#FF33B2', '#FFB233','#FFB2C3', '#FF6347', '#FFD700', '#32CD32', '#8A2BE2', '#00CED1', '#00FF7F', '#FF4500', '#FF1493', '#1E90FF', '#00FA9A', '#D2691E', '#8B008B', '#B8860B', '#4682B4', '#2E8B57', '#A0522D', '#6A5ACD', '#20B2AA']
       }]
     };
   }
